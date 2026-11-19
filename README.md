@@ -11,7 +11,7 @@ Carousel Instagram ukuran 1080×1350 (4:5) dengan palet **Berry Busui**:
 | Krem | `#FFF7EF` | Kartu teks, latar foto |
 
 Font: Josefin Sans (judul), Dancing Script (kata kunci), Quicksand (isi).
-Footer: `@dr.reni || Konselor Menyusui` (atur di `CONFIG` dalam `content.js`).
+Footer: `@reni_prativi || Konselor Menyusui` (atur di `CONFIG` dalam `content.js`).
 
 > **Mau pakai dari HP / web tanpa laptop?** Baca **`PANDUAN-HP.md`**. Setelah siap, cukup ketik `/carousel topik` di Claude Code.
 

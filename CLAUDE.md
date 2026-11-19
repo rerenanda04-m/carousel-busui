@@ -21,7 +21,7 @@ Daftar jenis slide, field-nya, dan contohnya: lihat komentar di atas `content.js
 ## Gaya brand (jangan diubah tanpa diminta)
 - Palet Berry Busui: plum `#5B2A6E`, berry `#C2408F`, kuning `#FFD45C`, pink `#F9DCEA`, krem `#FFF7EF`.
 - Font: Josefin Sans (judul), Dancing Script (kata kunci `*kata*`), Quicksand (isi).
-- Ukuran 1080×1350. Footer: `@dr.reni || Konselor Menyusui`.
+- Ukuran 1080×1350. Footer: `@reni_prativi || Konselor Menyusui`.
 
 ## Aturan menulis isi slide
 - Sapa audiens "Mama". Nada hangat, happy, edukatif, tidak menakut-nakuti, tidak menghakimi.

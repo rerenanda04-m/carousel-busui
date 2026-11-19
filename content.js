@@ -31,8 +31,8 @@
 
 const CONFIG = {
   nama: "dr. Reni",
-  handle: "@dr.reni",              // username IG (dipakai di tombol Follow)
-  label: "Konselor Menyusui",      // tampil di footer: @dr.reni || Konselor Menyusui
+  handle: "@reni_prativi",              // username IG (dipakai di tombol Follow)
+  label: "Konselor Menyusui",      // tampil di footer: @reni_prativi || Konselor Menyusui
   tagline: "Dokter & Konselor Menyusui",
   inisial: "R",                    // huruf di lingkaran avatar
   fotoProfil: "",                  // isi "img/profil.jpg" untuk pakai foto

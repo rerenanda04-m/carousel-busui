@@ -1,0 +1,3 @@
+Simpan klip B-roll di folder ini (MP4/MOV pendek, maks 15 detik, maks 25 MB),
+lalu tulis video: "video/namafile.mp4" di content.js.
+Contoh yang sudah dipakai di carousel #8: contoh-broll.mp4

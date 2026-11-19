@@ -1,0 +1,12 @@
+{
+  "name": "carousel-busui",
+  "private": true,
+  "description": "Carousel Instagram konselor menyusui",
+  "scripts": {
+    "export": "node export.mjs",
+    "galeri": "node build-galeri.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

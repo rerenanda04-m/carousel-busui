@@ -1,0 +1,67 @@
+# Setiap ada perubahan yang di-push, GitHub otomatis membuat PNG/MP4
+# lalu menerbitkannya ke halaman galeri (GitHub Pages).
+name: Render carousel
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["**.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Pasang alat
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install chromium
+          which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
+      - name: Ekspor slide (PNG & MP4)
+        run: node export.mjs
+
+      - name: Buat galeri & ZIP
+        run: |
+          node build-galeri.mjs
+          cd output && for d in */; do zip -qr "${d%/}.zip" "$d"; done
+
+      - name: Susun situs
+        run: |
+          mkdir -p _site
+          cp index.html _site/pratinjau.html
+          cp -r styles.css app.js content.js _site/
+          [ -d img ] && cp -r img _site/ || true
+          [ -d video ] && cp -r video _site/ || true
+          cp -r output _site/output
+          echo '<meta http-equiv="refresh" content="0; url=output/">' > _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: render
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

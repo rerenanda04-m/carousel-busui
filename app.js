@@ -132,7 +132,7 @@ const T = {
     <div class="card"><p class="body">${fmt(s.body)}</p></div>`,
 
   mitos: (s, i) => `
-    <h2 class="mf-head">Mitos atau fakta? <em>#${i}</em></h2>
+    <h2 class="mf-head">${s.judul ? fmt(s.judul) : `Mitos atau fakta? <em>#${i}</em>`}</h2>
     <div class="mf m"><div class="tag" style="color:${C.berry}">${ICON.x(C.berry)} Mitos</div><p class="txt">${fmt(s.mitos)}</p></div>
     <div class="mf f"><div class="tag">${ICON.check(C.kuning)} Fakta</div><p class="txt">${fmt(s.fakta)}</p></div>`,
 

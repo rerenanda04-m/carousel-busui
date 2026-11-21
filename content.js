@@ -16,6 +16,12 @@
      "Taruh foto di sini". posisiFoto: "center top" dst.
      untuk mengatur bagian foto yang terlihat.
    - stiker: "teks" → stiker kuning miring di pojok kanan atas.
+   - ==kata== → distabilo kuning · ((kata)) → dilingkari coretan
+   - cta dengan kataKunci: "ASI" → kotak besar Komen “ASI” (pancing komen,
+     lalu balas lewat DM sesuai janji di slide)
+   - kolase: 1–4 foto ala vlog/photo dump, tiap foto boleh punya label
+   - tipe: tipe konten viral → "vlog", "step-by-step", "kompilasi",
+     "video", "opini", "repurpose" (untuk catatan & pilihan /carousel)
    - FORMAT carousel (isi di level carousel, di samping judul):
        format: "teks"     → slide desain teks, hasil PNG
        format: "foto"     → teks + foto dari folder img/, hasil PNG
@@ -240,6 +246,15 @@ const CAROUSELS = [
       { type: "foto-kartu", foto: "img/contoh-bayi.jpg", caption: "si Kecil, 3 hari",
         title: "Di balik *foto* ini…",
         body: "Kartu polaroid untuk cerita personal atau behind the scene." },
+      { type: "kolase",
+        title: "Sehari jadi ==dokter busui==",
+        fotos: [
+          { foto: "img/vlog-1.jpg", label: "06.00 menyusui" },
+          { foto: "img/vlog-2.jpg", label: "praktik" },
+          { foto: "img/vlog-3.jpg", label: "pumping" },
+          { foto: "img/vlog-4.jpg", label: "masak malam" },
+        ],
+        sub: "Kolase 1–4 foto untuk tipe vlog / photo dump" },
       { type: "banding",
         title: "Ekspektasi vs *realita*",
         kiri:  { label: "Ekspektasi", foto: "img/ekspektasi.jpg", teks: "Menyusui itu damai, kayak di iklan." },
@@ -427,6 +442,55 @@ const CAROUSELS = [
       { type: "cta",
         title: "*Simpan* dulu ya, Ma",
         body: "Pasti butuh pas jam 2 pagi 🌙",
+        actions: ["save", "share", "follow"] },
+    ],
+  },
+  /* ---------------------------------------------------- #11 */
+  /* Tipe KOMPILASI: kumpulan jawaban siap pakai → dipancing save & share,
+     ditutup CTA komen kata kunci. */
+  {
+    id: "11-jawaban-asi-kurang",
+    judul: "#11 6 jawaban sopan saat dibilang ASI kurang (kompilasi)",
+    format: "teks",
+    tipe: "kompilasi",
+    slides: [
+      { type: "hook", stiker: "simpan dulu!",
+        kicker: "Kompilasi",
+        title: "6 jawaban *sopan* saat dibilang ((ASI kurang))",
+        sub: "Buat Mama yang capek dikomentari" },
+      { type: "validasi",
+        title: "Dikomentari terus itu *melelahkan*",
+        body: "Niatnya sering baik, tapi bikin ragu. Ini jawaban yang tetap sopan, sekaligus faktanya." },
+      { type: "chat", judul: "Kalau dibilang…", subjudul: "jawaban 1–2",
+        pesan: [
+          { dari: "mama", teks: "“ASI-mu encer, nggak bergizi itu.”" },
+          { dari: "dokter", teks: "ASI awal memang lebih encer, Bu, nanti makin kental. Dua-duanya *penting*." },
+          { dari: "mama", teks: "“Bayinya nangis terus, pasti lapar.”" },
+          { dari: "dokter", teks: "Bisa jadi, bisa juga popok atau minta digendong. Aku *cek dulu* ya." },
+        ] },
+      { type: "chat", judul: "Kalau dibilang…", subjudul: "jawaban 3–4",
+        pesan: [
+          { dari: "mama", teks: "“Payudaramu kecil, ASI-nya pasti dikit.”" },
+          { dari: "dokter", teks: "Ukuran nggak menentukan, Bu. Yang penting *sering* disusui." },
+          { dari: "mama", teks: "“Kok nyusu terus? Nggak kenyang tuh.”" },
+          { dari: "dokter", teks: "Bayi baru lahir memang menyusu *8–12 kali* sehari, Bu. Normal." },
+        ] },
+      { type: "chat", judul: "Kalau dibilang…", subjudul: "jawaban 5–6",
+        pesan: [
+          { dari: "mama", teks: "“Kasih sufor aja biar kenyang.”" },
+          { dari: "dokter", teks: "Aku mau maksimalkan ASI dulu, Bu. Kalau perlu, aku *konsultasi* ke dokter." },
+          { dari: "mama", teks: "“Makan ini-itu biar ASI banyak.”" },
+          { dari: "dokter", teks: "Makasih, Bu. Kuncinya *sering menyusui*, makan bergizi, cukup minum." },
+        ] },
+      { type: "peringatan",
+        title: "Kapan ASI ==perlu dicek==?",
+        items: ["Popok basah < 6 per hari setelah hari ke-5", "Berat badan tidak naik",
+                "Bayi lemas, sulit dibangunkan untuk menyusu"],
+        note: "Kalau ada tanda ini, periksa ke dokter, bidan, atau konselor menyusui." },
+      { type: "cta",
+        title: "Mau versi *siap simpan*?",
+        body: "Aku kirim checklist “5 tanda bayi cukup ASI” ke DM.",
+        kataKunci: "ASI",
         actions: ["save", "share", "follow"] },
     ],
   },

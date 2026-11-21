@@ -67,9 +67,16 @@ Contoh lengkap semua jenis ada di carousel **#6 Katalog**.
 | `polling` | "Tim A atau tim B?" pancing komen | Ya (tiap pilihan) |
 | `resep` | Konten masak | Ya (foto bulat) |
 | `cerita` | Curhat / storytelling ala diary | — |
+| `kolase` | Vlog / photo dump, 1–4 foto berlabel | Ya (wajib) |
 | `cta` | Slide terakhir: save, komen, share, follow | — |
 
 Tambahan untuk slide apa saja: `stiker: "kata dokter"` → stiker kuning miring di pojok kanan atas.
+Gaya teks: `*kata*` tulisan sambung · `==kata==` distabilo kuning · `((kata))` dilingkari coretan.
+CTA pancing komen: di slide `cta` tambahkan `kataKunci: "ASI"` → muncul kotak Komen “ASI”.
+
+## Tipe konten viral
+Vlog/photo dump · Step-by-step · Kompilasi · Video carousel · Opini pribadi · Repurpose reels.
+Saat mengetik `/carousel`, Claude akan menawarkan keenam tipe ini beserta susunan slidenya. Contoh kompilasi: carousel **#11**.
 
 ## Menambahkan foto
 

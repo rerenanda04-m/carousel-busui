@@ -32,7 +32,12 @@ const DOODLE = {
 
 /* ---------- pembantu ---------- */
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const fmt = s => esc(s).replace(/\*(.+?)\*/g, "<em>$1</em>").replace(/\n/g, "<br>");   // *kata* → aksen
+// *kata* → aksen tulisan sambung · ==kata== → stabilo kuning · ((kata)) → dilingkari coretan
+const fmt = s => esc(s)
+  .replace(/\*(.+?)\*/g, "<em>$1</em>")
+  .replace(/==(.+?)==/g, '<mark class="stabilo">$1</mark>')
+  .replace(/\(\((.+?)\)\)/g, '<span class="lingkar">$1</span>')
+  .replace(/\n/g, "<br>");
 const pad = n => String(n).padStart(2, "0");
 
 /* Foto: kalau file belum ada / salah nama, otomatis muncul kotak "taruh foto di sini" */
@@ -65,7 +70,7 @@ const SPOTS = [
   [["drop", "top:90px;left:96px;width:54px"], ["ring", "top:60px;left:150px;width:150px"]],
   [["squiggle", "top:100px;left:90px;width:200px;transform:rotate(-6deg)"], ["sparkle", "top:86px;right:120px;width:56px"]],
 ];
-const NO_DECOR = ["cta", "foto-penuh", "chat", "resep", "cerita", "banding", "kutipan"];
+const NO_DECOR = ["cta", "foto-penuh", "chat", "resep", "cerita", "banding", "kutipan", "kolase"];
 
 function decor(type, i) {
   if (NO_DECOR.includes(type)) return "";
@@ -198,10 +203,18 @@ const T = {
     ${s.tanggal ? `<div class="tgl">${esc(s.tanggal)}</div>` : ""}
     <p class="story">${fmt(s.teks)}</p>`,
 
+  kolase: s => `
+    ${s.title ? `<h1 class="title">${fmt(s.title)}</h1>` : ""}
+    <div class="kolase n${Math.min((s.fotos || []).length, 4)}">
+      ${(s.fotos || []).slice(0, 4).map(f => `<figure class="kp">${media(f)}${f.label ? `<figcaption>${esc(f.label)}</figcaption>` : ""}</figure>`).join("")}
+    </div>
+    ${s.sub ? `<p class="sub">${fmt(s.sub)}</p>` : ""}`,
+
   cta: s => `
     <div class="blob" style="width:520px;height:520px;background:#6A3580;top:-160px;left:-160px"></div>
     <h1 class="title">${fmt(s.title)}</h1>
     ${s.body ? `<p class="body">${fmt(s.body)}</p>` : ""}
+    ${s.kataKunci ? `<div class="kunci">Komen <b>“${esc(s.kataKunci)}”</b></div>` : ""}
     <div class="actions">${(s.actions || ["save", "komen", "share"]).map(a => `<div class="act"><div class="ic">${ICON[a](C.krem)}</div>${a}</div>`).join("")}</div>
     <div class="follow-pill">Follow ${esc(CONFIG.handle)}</div>`,
 };
@@ -210,7 +223,7 @@ const T = {
 function renderSlide(s, i, n, c = {}) {
   const tpl = T[s.type];
   if (!tpl) return `<div class="slide"><h1 class="title">Jenis slide "${esc(s.type)}" belum ada</h1></div>`;
-  const noBridge = ["foto-penuh", "chat", "resep", "cerita", "langkah", "banding"].includes(s.type);
+  const noBridge = ["foto-penuh", "chat", "resep", "cerita", "langkah", "banding", "kolase"].includes(s.type);
   const bridge = noBridge ? "" : (i > 0 ? `<div class="bridge l"></div>` : "") + (i < n - 1 ? `<div class="bridge r"></div>` : "");
   const sticker = s.stiker ? `<div class="sticker" style="top:100px;right:90px">${esc(s.stiker)}</div>` : "";
   const extra = s.type === "banding" && !hasMedia(s.kiri) && !hasMedia(s.kanan) ? " tanpa-foto" : "";

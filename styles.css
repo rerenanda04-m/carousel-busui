@@ -325,3 +325,54 @@ video.ph { background: var(--plum); }
 .slide.gerak .sticker { animation: goyang 1.2s ease-in-out infinite, pop .5s both 1.2s; }
 .slide.gerak .bg .ph { animation: zoom 8s linear both; }
 .slide.gerak .story em { background: linear-gradient(var(--kuning), var(--kuning)) no-repeat; background-size: 0% 100%; animation: garis .8s ease-out forwards 1.4s; }
+
+/* =========================================================
+   GAYA "VIRAL": stabilo, lingkaran coretan, kolase, komen kata kunci
+   ========================================================= */
+mark.stabilo {
+  color: inherit; padding: 0 .12em; border-radius: .2em;
+  background: linear-gradient(100deg, transparent 0 2%, rgba(255,212,92,.92) 3% 96%, transparent 97%) 0 62% / 100% 52% no-repeat;
+}
+.t-checklist mark.stabilo, .t-polling mark.stabilo { background-image: linear-gradient(100deg, transparent 0 2%, rgba(255,247,239,.9) 3% 96%, transparent 97%); }
+.lingkar { position: relative; display: inline-block; white-space: nowrap; }
+.lingkar::after {
+  content: ""; position: absolute; inset: -.12em -.28em -.08em -.28em;
+  border: .07em solid var(--berry); border-radius: 50%;
+  transform: rotate(-4deg); pointer-events: none;
+}
+:is(.t-hook, .t-cta, .t-kutipan, .t-polling, .t-foto-penuh) .lingkar::after { border-color: var(--kuning); }
+
+/* KOLASE (vlog / photo dump) */
+.t-kolase { background: var(--krem); justify-content: flex-start; padding-top: 110px; }
+.t-kolase .title { font-size: 84px; margin-bottom: 50px; }
+.kolase { display: grid; gap: 30px; flex: 1; min-height: 0; }
+.kolase.n1 { grid-template-columns: 1fr; }
+.kolase.n2 { grid-template-columns: 1fr 1fr; }
+.kolase.n3 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.kolase.n3 .kp:first-child { grid-row: span 2; }
+.kolase.n4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.kp { position: relative; margin: 0; background: #fff; padding: 16px 16px 16px; box-shadow: 0 16px 34px rgba(91,42,110,.16); min-height: 0; }
+.kp:nth-child(odd) { transform: rotate(-2deg); }
+.kp:nth-child(even) { transform: rotate(2.2deg); }
+.kp > .ph, .kp > .ph-empty { height: 100%; }
+.kp figcaption {
+  position: absolute; left: 30px; bottom: 30px; background: var(--kuning); color: var(--plum);
+  font: 700 30px var(--f-isi); padding: 10px 20px; border-radius: 14px; transform: rotate(-3deg);
+}
+.t-kolase .sub { font: 600 42px var(--f-isi); margin-top: 40px; }
+.t-kolase .ph-empty { font-size: 26px; }
+.t-kolase .ph-empty svg { width: 60px; }
+
+/* CTA komen kata kunci */
+.kunci {
+  margin-top: 60px; background: var(--krem); color: var(--plum);
+  font: 600 52px var(--f-isi); padding: 30px 56px 24px; border-radius: 28px;
+  transform: rotate(-2deg); box-shadow: 12px 12px 0 var(--berry);
+}
+.kunci b { font: 700 64px var(--f-hook); color: var(--berry); }
+.t-cta .kunci + .actions { margin-top: 70px; }
+.slide.gerak .kunci { animation: pop .7s both .6s; }
+.slide.gerak .kp:nth-child(1) { animation: pop .6s both .3s; }
+.slide.gerak .kp:nth-child(2) { animation: pop .6s both .6s; }
+.slide.gerak .kp:nth-child(3) { animation: pop .6s both .9s; }
+.slide.gerak .kp:nth-child(4) { animation: pop .6s both 1.2s; }

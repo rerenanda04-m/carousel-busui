@@ -30,6 +30,10 @@ Daftar jenis slide, field-nya, dan contohnya: lihat komentar di atas `content.js
 - **Akurasi medis wajib.** Jangan klaim makanan/jamu/suplemen "ajaib" penambah ASI. Kalau menyebut angka klinis (frekuensi menyusu, penyimpanan ASIP, dll.), pakai rujukan umum (WHO/IDAI/Kemenkes/ABM) dan sebutkan ke pemilik angka mana yang perlu ia cek.
 - Sertakan slide `peringatan` (kapan ke tenaga kesehatan) bila topiknya menyangkut gejala.
 
+## Tipe konten viral
+Enam pola yang sedang ramai: vlog/photo dump, step-by-step, kompilasi, video carousel, opini pribadi, repurpose reels. Resep susunan slidenya ada di `.claude/commands/carousel.md`.
+Gaya visual pendukung: `==stabilo==`, `((lingkari))`, `stiker`, jenis slide `kolase`, dan `cta` dengan `kataKunci` (Komen "…"). Janji di `kataKunci` harus sesuatu yang benar-benar bisa dikirim pemilik lewat DM.
+
 ## Alur membuat carousel baru
 Gunakan perintah `/carousel` (lihat `.claude/commands/carousel.md`). Selalu **tanyakan bentuk carousel dulu** sebelum menulis.
 

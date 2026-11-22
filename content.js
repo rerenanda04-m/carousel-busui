@@ -20,6 +20,11 @@
    - cta dengan kataKunci: "ASI" → kotak besar Komen “ASI” (pancing komen,
      lalu balas lewat DM sesuai janji di slide)
    - kolase: 1–4 foto ala vlog/photo dump, tiap foto boleh punya label
+   - caption: "…" & hashtag: "…" (level carousel) → muncul di galeri
+     dengan tombol salin, dan ikut tersimpan sebagai caption.txt
+   - tema: "scrapbook" (level carousel atau slide) → kertas, sobekan,
+     tulisan tangan. Default: tampilan berry biasa.
+   - {{teks}} → huruf ala potongan koran (cocok untuk judul hook scrapbook)
    - tipe: tipe konten viral → "vlog", "step-by-step", "kompilasi",
      "video", "opini", "repurpose" (untuk catatan & pilihan /carousel)
    - FORMAT carousel (isi di level carousel, di samping judul):
@@ -49,6 +54,8 @@ const CAROUSELS = [
   {
     id: "01-kenalan-fase",
     judul: "#1 Kenalan: Mama di fase mana?",
+    caption: "Halo, Mama! 👋 Aku dr. Reni, dokter umum sekaligus konselor menyusui.\n\nDi akun ini kita belajar menyusui yang tenang, happy, dan tanpa drama, dari hamil sampai menyapih.\n\nMama sekarang di fase berapa? Tulis angkanya di komen ya. Konten berikutnya aku buat sesuai fase yang paling banyak dipilih 💕",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #newmom #ibuhamil",
     format: "teks",
     slides: [
       { type: "hook",
@@ -84,6 +91,8 @@ const CAROUSELS = [
   {
     id: "02-tanda-cukup-asi",
     judul: "#2 5 tanda bayi cukup ASI",
+    caption: "Takut ASI kurang, padahal si Kecil baik-baik saja? 🥺\n\nKita memang nggak bisa lihat berapa ml ASI yang masuk. Tapi ada 5 tanda yang bisa Mama cek sendiri di rumah, dari popok sampai berat badan.\n\nSimpan buat jaga-jaga jam 2 pagi, dan kirim ke teman yang baru lahiran ya 🤍\n\nMama paling sering ragu di tanda nomor berapa?",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #asikurang #newborn #edukasimenyusui",
     format: "teks",
     slides: [
       { type: "hook",
@@ -126,6 +135,8 @@ const CAROUSELS = [
   {
     id: "03-mitos-fakta",
     judul: "#3 Mitos vs fakta dari mertua",
+    caption: "“Payudara kecil, ASI-nya sedikit.” Pernah dengar? 🙈\n\nNiat keluarga sering baik, tapi mitos seperti ini bikin Mama ragu sama diri sendiri. Yuk cek faktanya satu per satu.\n\nMitos apa yang paling sering Mama dengar? Tulis di komen, nanti aku bahas di part 2 👇",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #mitosmenyusui #mitosvsfakta #edukasimenyusui",
     format: "teks",
     slides: [
       { type: "hook",
@@ -162,6 +173,8 @@ const CAROUSELS = [
   {
     id: "04-kembali-kerja",
     judul: "#4 Checklist busui kembali kerja",
+    caption: "Sebentar lagi kembali kerja? Tenang, menyusui tetap bisa lanjut kok 💼🍼\n\nIni checklist yang perlu disiapkan: kapan mulai nabung ASIP, latihan untuk pengasuh, jadwal perah, sampai isi tas pumping.\n\nSave dulu, lalu share ke teman kantor yang sebentar lagi masuk kerja lagi!\n\nMama sudah mulai nabung ASIP belum?",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #ibubekerja #asip #pumping #busuibekerja",
     format: "teks",
     slides: [
       { type: "hook",
@@ -200,6 +213,8 @@ const CAROUSELS = [
   {
     id: "05-camilan-busui",
     judul: "#5 3 camilan busui 10 menit",
+    caption: "Busui lapar terus? Normal, Ma! Tubuh butuh energi ekstra untuk produksi ASI 🍌🥚\n\nIni 3 camilan yang bisa disiapkan dalam 10 menit. Ingat, nggak ada makanan ajaib penambah ASI. Kuncinya gizi seimbang, cukup minum, dan sering menyusui.\n\nMama tim manis atau tim asin? Komen ya, nanti aku bikinin resep versi kalian 👇",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #camilanbusui #resepbusui #makananbusui",
     format: "teks",
     slides: [
       { type: "hook",
@@ -303,6 +318,8 @@ const CAROUSELS = [
   {
     id: "07-ekspektasi-realita",
     judul: "#7 Ekspektasi vs realita mengASIhi (pakai foto)",
+    caption: "Ekspektasi: menyusui itu damai kayak di iklan. Realita: begadang, rambut acak-acakan, tapi tetap meleleh lihat si Kecil 🥹\n\nKalau realitamu berantakan, bukan berarti kamu gagal. Kamu dan bayimu sama-sama sedang belajar.\n\nRealita mana yang paling relate? Ceritain di komen ya, Ma, kita saling menguatkan 💕",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #ekspektasivsrealita #newmom #momlife",
     format: "foto",
     slides: [
       { type: "foto-penuh", foto: "img/realita.jpg", posisiFoto: "center top",
@@ -364,6 +381,8 @@ const CAROUSELS = [
   {
     id: "09-perlekatan-menyusui",
     judul: "#9 Menyusui harus sakit? (perlekatan)",
+    caption: "“Menyusui itu memang harus sakit, tahan saja.” Benarkah? 🤔\n\nRasa tidak nyaman sesaat di awal bisa terjadi. Tapi nyeri terus-menerus atau puting lecet biasanya tanda pelekatan perlu dibenahi.\n\nGeser untuk lihat langkah pelekatan yang pas dan kapan perlu cari bantuan.\n\nPernah merasa menyusui itu sakit? Cerita di komen ya, Ma 👇",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #pelekatan #putinglecet #edukasimenyusui",
     format: "teks",
     slides: [
       { type: "hook",
@@ -403,6 +422,8 @@ const CAROUSELS = [
   {
     id: "10-bayi-nangis",
     judul: "#10 Bayi nangis terus = ASI kurang? (B-roll)",
+    caption: "Bayi nangis terus, langsung dibilang ASI kurang? Belum tentu, Ma! 😮‍💨\n\nLanjutan reels Geng Busui “Drama Bayi Nangis”: ini 6 alasan lain kenapa bayi menangis, plus kapan perlu ke dokter.\n\nSimpan dulu, pasti kepakai jam 2 pagi 🌙 Kirim juga ke pasangan biar bisa ikut ngecek!\n\nSi Kecil paling sering nangis karena apa nih?",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #bayinangis #gengbusui #newborn #growthspurt",
     format: "broll",
     tipe: "repurpose",
     slides: [
@@ -452,6 +473,8 @@ const CAROUSELS = [
   {
     id: "11-jawaban-asi-kurang",
     judul: "#11 6 jawaban sopan saat dibilang ASI kurang (kompilasi)",
+    caption: "Capek dikomentari soal ASI? Ini 6 jawaban yang tetap sopan, plus faktanya 🫶\n\nNiat keluarga sering baik, tapi komentar seperti “ASI-mu encer” atau “kasih sufor aja” bisa bikin Mama ragu. Simpan jawaban ini dan pakai kalau perlu.\n\n💬 Komen “ASI”, aku kirim checklist 5 tanda bayi cukup ASI ke DM kamu!\n\nKomentar apa yang paling sering Mama dengar?",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asi #mengasihi #asikurang #mitosmenyusui #gengbusui",
     format: "teks",
     tipe: "kompilasi",
     slides: [
@@ -492,6 +515,45 @@ const CAROUSELS = [
         title: "Mau versi *siap simpan*?",
         body: "Aku kirim checklist “5 tanda bayi cukup ASI” ke DM.",
         kataKunci: "ASI",
+        actions: ["save", "share", "follow"] },
+    ],
+  },
+  /* ---------------------------------------------------- #12 */
+  /* Tipe STEP-BY-STEP dengan tema SCRAPBOOK */
+  {
+    id: "12-stok-asip-scrapbook",
+    judul: "#12 Stok ASIP dalam 4 langkah (scrapbook)",
+    caption: "Mau kembali kerja tapi bingung mulai stok ASIP dari mana? 🍼\n\nNggak perlu sampai ribuan ml kok, Ma. Ini panduan mini 4 langkah, lengkap dengan aturan simpan dan cara mencairkannya.\n\nSave dulu biar nggak lupa, lalu share ke teman yang sebentar lagi masuk kerja!\n\nMama biasanya perah jam berapa?",
+    hashtag: "#konselormenyusui #ibumenyusui #busui #asip #stokasip #pumping #ibubekerja",
+    format: "teks",
+    tipe: "step-by-step",
+    tema: "scrapbook",
+    slides: [
+      { type: "hook", stiker: "simpan!",
+        kicker: "Step-by-step",
+        title: "{{STOK ASIP}} dalam ((4 langkah))",
+        sub: "Panduan mini sebelum kembali kerja" },
+      { type: "validasi",
+        title: "Nggak harus *ribuan ml*",
+        body: "Stok untuk beberapa hari pertama sudah cukup. Selanjutnya dari perahan harian di tempat kerja." },
+      { type: "langkah",
+        title: "4 langkah ==mulai stok==",
+        steps: [
+          { judul: "Mulai 2–4 minggu sebelumnya", teks: "Santai, sedikit demi sedikit." },
+          { judul: "Perah 1x sehari", teks: "Misalnya setelah menyusu pagi." },
+          { judul: "Simpan porsi kecil", teks: "60–120 ml per kantong, beri label tanggal." },
+          { judul: "Pakai yang terlama dulu", teks: "Yang pertama disimpan, pertama dipakai." },
+        ] },
+      { type: "tabel",
+        title: "Aturan *simpan* ASIP",
+        rows: [["Suhu ruang", "≤ 4 jam"], ["Kulkas", "≤ 4 hari"], ["Freezer", "ideal ≤ 6 bulan"]] },
+      { type: "checklist",
+        title: "Cara *mencairkan*",
+        items: ["Pindahkan ke kulkas semalam", "Atau rendam di air hangat", "Jangan pakai microwave",
+                "Goyang pelan sebelum diberikan", "Yang sudah cair jangan dibekukan lagi"] },
+      { type: "cta",
+        title: "*Save* & share ke teman kerja",
+        body: "Biar persiapannya nggak mepet.",
         actions: ["save", "share", "follow"] },
     ],
   },

@@ -20,6 +20,8 @@ for (const c of [...ctx.CAROUSELS].reverse()) {          // carousel terbaru di 
   <section>
     <div class="head"><h2>${esc(c.judul)}</h2>${c.format ? `<span>${esc(c.format)}</span>` : ""}
       ${existsSync(path.join(out, c.id + ".zip")) ? `<a class="zip" href="${c.id}.zip" download>Unduh semua (ZIP)</a>` : ""}</div>
+    ${c.caption ? `<div class="cap"><pre id="cap-${c.id}">${esc(c.caption + (c.hashtag ? "\n\n" + c.hashtag : ""))}</pre>
+      <button onclick="salin('cap-${c.id}', this)">Salin caption</button></div>` : ""}
     <div class="grid">${files.map(f => {
       const src = `${c.id}/${f}`;
       const media = f.endsWith(".mp4")
@@ -45,10 +47,23 @@ h2{font-family:"Josefin Sans";font-size:18px;margin:0;flex:1 1 100%}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 figure{margin:0}img,video{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block;background:#eee}
 figcaption{font-size:12px;margin-top:4px}figcaption a{color:#C2408F;font-weight:700}
+.cap{background:#fff;border:2px dashed #E7B3CF;border-radius:14px;padding:12px;margin-bottom:12px}
+.cap pre{white-space:pre-wrap;font:500 14px/1.5 Quicksand,system-ui,sans-serif;margin:0 0 10px}
+.cap button{background:#5B2A6E;color:#fff;border:0;border-radius:99px;padding:8px 16px;font:700 14px Quicksand,sans-serif}
 </style></head><body>
 <div class="top"><h1>Galeri carousel</h1>
 <p>Tekan lama gambar → Simpan, atau unduh ZIP per carousel. Video (.mp4) bisa dicampur dengan gambar dalam satu post IG.
 <br><a href="../pratinjau.html">Lihat pratinjau semua slide →</a></p></div>
 ${sets.join("") || "<p>Belum ada hasil ekspor.</p>"}
+<script>
+function salin(id, btn) {
+  const t = document.getElementById(id).innerText;
+  const ok = () => { btn.textContent = "Tersalin ✓"; setTimeout(() => btn.textContent = "Salin caption", 2000); };
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, () => pilih(id));
+  else pilih(id);
+  function pilih(id) { const r = document.createRange(); r.selectNodeContents(document.getElementById(id));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Tekan lama → Salin"; }
+}
+</script>
 </body></html>`);
 console.log("✓ output/index.html");

@@ -37,7 +37,14 @@ const fmt = s => esc(s)
   .replace(/\*(.+?)\*/g, "<em>$1</em>")
   .replace(/==(.+?)==/g, '<mark class="stabilo">$1</mark>')
   .replace(/\(\((.+?)\)\)/g, '<span class="lingkar">$1</span>')
+  .replace(/\{\{(.+?)\}\}/g, (_, t) => koran(t))
   .replace(/\n/g, "<br>");
+// {{teks}} → huruf ala potongan koran (tiap huruf beda kertas & font)
+function koran(t) {
+  let k = 0;
+  return `<span class="koran">${(t.match(/&[a-z]+;|./g) || []).map(ch => ch === " " ? `<span class="sp"></span>`
+    : `<span class="r r${(k++ * 7 + ch.charCodeAt(0)) % 6 + 1}">${ch}</span>`).join("")}</span>`;
+}
 const pad = n => String(n).padStart(2, "0");
 
 /* Foto: kalau file belum ada / salah nama, otomatis muncul kotak "taruh foto di sini" */
@@ -72,8 +79,24 @@ const SPOTS = [
 ];
 const NO_DECOR = ["cta", "foto-penuh", "chat", "resep", "cerita", "banding", "kutipan", "kolase"];
 
-function decor(type, i) {
+const INK = "#3A2440";
+const DOODLE_TINTA = {
+  bintang: () => `<svg viewBox="0 0 60 60" fill="none" stroke="${INK}" stroke-width="3" stroke-linejoin="round"><path d="M30 4c3 15 9 21 26 26-17 4-22 10-26 26-4-16-10-22-26-26 16-5 22-11 26-26z"/></svg>`,
+  panah: () => `<svg viewBox="0 0 160 80" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 60c30-40 70-52 120-34"/><path d="M110 14l18 12-16 16"/></svg>`,
+  hati: () => `<svg viewBox="0 0 60 54" fill="none" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"><path d="M30 50S4 34 4 17A12 12 0 0 1 30 11a12 12 0 0 1 26 6c0 17-26 33-26 33z"/><path d="M14 18c1-4 4-6 8-6" stroke-linecap="round"/></svg>`,
+  spiral: () => `<svg viewBox="0 0 80 80" fill="none" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"><path d="M40 40c0-4 6-4 6 0 0 7-12 7-12 0 0-10 18-10 18 0 0 13-24 13-24 0 0-16 30-16 30 0"/></svg>`,
+  selotip: () => `<svg viewBox="0 0 200 60"><rect x="4" y="6" width="192" height="48" rx="3" fill="rgba(255,212,92,.75)" transform="rotate(-4 100 30)"/></svg>`,
+};
+const SPOTS_TINTA = [
+  [["bintang", "top:96px;right:110px;width:80px"], ["panah", "top:36px;right:230px;width:120px;transform:rotate(-6deg)"]],
+  [["hati", "top:92px;left:96px;width:76px;transform:rotate(-10deg)"], ["bintang", "top:110px;right:120px;width:54px"]],
+  [["spiral", "top:84px;right:100px;width:96px"], ["selotip", "top:40px;left:120px;width:240px"]],
+  [["selotip", "top:46px;right:140px;width:220px;transform:rotate(6deg)"], ["bintang", "top:120px;left:100px;width:60px"]],
+];
+function decor(type, i, tema) {
   if (NO_DECOR.includes(type)) return "";
+  if (tema === "scrapbook")
+    return SPOTS_TINTA[i % SPOTS_TINTA.length].map(([k, css]) => `<div class="doodle" style="${css}">${DOODLE_TINTA[k]()}</div>`).join("");
   const [c1, c2] = PALET[type] || PALET.default;
   return SPOTS[i % SPOTS.length]
     .map(([k, css], j) => `<div class="doodle" style="${css}">${DOODLE[k](j ? c2 : c1)}</div>`).join("");
@@ -228,10 +251,11 @@ function renderSlide(s, i, n, c = {}) {
   const sticker = s.stiker ? `<div class="sticker" style="top:100px;right:90px">${esc(s.stiker)}</div>` : "";
   const extra = s.type === "banding" && !hasMedia(s.kiri) && !hasMedia(s.kanan) ? " tanpa-foto" : "";
   const gerak = s.gerak ?? c.gerak ?? false;
+  const tema = s.tema ?? c.tema ?? "berry";
   const bergerak = gerak || !!s.video;          // slide ini diekspor jadi MP4
   const durasi = s.durasi || (s.video ? 0 : 5); // 0 = ikuti panjang video (maks 15 dtk)
   const data = bergerak ? ` data-durasi="${durasi}"` : "";
-  return `<div class="slide t-${s.type}${extra}${gerak ? " gerak" : ""}"${data}>${bridge}${decor(s.type, i)}${tpl(s, i)}${sticker}${foot(s, i, n)}</div>`;
+  return `<div class="slide t-${s.type}${extra}${gerak ? " gerak" : ""} tema-${tema}"${data}>${tema === "scrapbook" ? `<div class="sobek-atas"></div>` : ""}${bridge}${decor(s.type, i, tema)}${tpl(s, i)}${sticker}${foot(s, i, n)}</div>`;
 }
 
 function render() {
@@ -242,6 +266,7 @@ function render() {
         ${c.format ? `<span class="fmt">${esc(c.format)}</span>` : ""}
         <button class="btn" data-dl="${c.id}">Download PNG</button>
         ${c.gerak || c.slides.some(s => s.gerak || s.video) ? `<button class="btn ghost" data-replay="${c.id}">Putar ulang animasi</button>` : ""}</div>
+      ${c.caption ? `<details class="cap-pv"><summary>Caption</summary><pre>${esc(c.caption + (c.hashtag ? "\n\n" + c.hashtag : ""))}</pre></details>` : ""}
       <div class="row">${c.slides.map((s, i) => `<div class="frame">${renderSlide(s, i, c.slides.length, c)}</div>`).join("")}</div>
     </section>`).join("");
 }

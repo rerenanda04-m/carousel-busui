@@ -34,6 +34,10 @@ Daftar jenis slide, field-nya, dan contohnya: lihat komentar di atas `content.js
 Enam pola yang sedang ramai: vlog/photo dump, step-by-step, kompilasi, video carousel, opini pribadi, repurpose reels. Resep susunan slidenya ada di `.claude/commands/carousel.md`.
 Gaya visual pendukung: `==stabilo==`, `((lingkari))`, `stiker`, jenis slide `kolase`, dan `cta` dengan `kataKunci` (Komen "…"). Janji di `kataKunci` harus sesuatu yang benar-benar bisa dikirim pemilik lewat DM.
 
+## Tema desain
+- `berry` (default): tampilan rapi palet berry.
+- `scrapbook`: kertas bertekstur, sobekan kraft, huruf tulisan tangan (Permanent Marker + Patrick Hand), bentuk garis tinta, `{{huruf koran}}`. Pasang `tema: "scrapbook"` per carousel atau per slide.
+
 ## Alur membuat carousel baru
 Gunakan perintah `/carousel` (lihat `.claude/commands/carousel.md`). Selalu **tanyakan bentuk carousel dulu** sebelum menulis.
 
@@ -42,7 +46,7 @@ Gunakan perintah `/carousel` (lihat `.claude/commands/carousel.md`). Selalu **ta
 2. Kalau bisa, coba `npm install && npx playwright install chromium && node export.mjs <id>` lalu **lihat PNG-nya** untuk memastikan teks tidak kepanjangan/tumpang tindih. Kalau instalasi gagal (jaringan dibatasi), lewati, karena GitHub Actions akan mengekspor.
 3. Commit dengan pesan bahasa Indonesia yang jelas, lalu **push** (ke `main` kalau diizinkan; kalau tidak, ke branch sesi — workflow tetap berjalan untuk semua branch).
 4. Beri tahu pemilik: hasil siap ±3–5 menit lagi di galeri. Link galeri: `https://<owner>.github.io/<repo>/` — ambil `<owner>/<repo>` dari `git remote get-url origin`.
-5. Tutup dengan saran caption singkat (2–4 kalimat + pertanyaan pancingan komen) dan 5–8 hashtag relevan.
+5. Pastikan carousel punya `caption` & `hashtag` di `content.js` (tampil di galeri + `caption.txt` di ZIP), lalu tampilkan juga caption itu di balasan.
 
 ## Foto & video
 - Pemilik mengunggah file lewat GitHub (folder `img/` atau `video/`). Kalau ia bilang sudah upload, jalankan `git pull` lalu cek nama filenya.

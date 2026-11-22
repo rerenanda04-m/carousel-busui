@@ -9,7 +9,7 @@ Ikuti langkah ini. Balas dalam bahasa Indonesia yang singkat (ia membaca dari HP
 
 ## 1. Tanyakan pilihan (sekali jalan)
 Kalau topik kosong, tanyakan topiknya dulu.
-Lalu kirim **satu pesan** berisi pertanyaan bernomor di bawah (pilihannya lebih dari 4, jadi jangan pakai AskUserQuestion). Ia cukup membalas misalnya "3, A, B, C". Kalau topiknya jelas cocok dengan satu tipe, tandai tipe itu sebagai saran.
+Lalu kirim **satu pesan** berisi pertanyaan bernomor di bawah (pilihannya lebih dari 4, jadi jangan pakai AskUserQuestion). Ia cukup membalas misalnya "3, A, B, C, B". Kalau topiknya jelas cocok dengan satu tipe, tandai tipe itu sebagai saran.
 
 1. **Tipe konten** (pola carousel yang lagi viral)
    1. Vlog / photo dump: cerita keseharian lewat foto (butuh foto)
@@ -26,6 +26,7 @@ Lalu kirim **satu pesan** berisi pertanyaan bernomor di bawah (pilihannya lebih 
    - E. Campuran
 3. **Tujuan utama**: A. Disimpan · B. Dikomentari · C. Dibagikan · D. Follower baru
 4. **Untuk Mama di fase**: A. Hamil · B. 0–6 minggu · C. Kembali kerja/pumping · D. MPASI/menyapih · E. Umum
+5. **Tema desain**: A. Berry (default, rapi & cerah) · B. Scrapbook (kertas sobek, tulisan tangan, ala konten viral)
 
 Panjang carousel ditentukan dari tipe (biasanya 6–10 slide).
 
@@ -48,6 +49,8 @@ Gaya viral yang bisa dipakai di semua tipe: `==stabilo==` untuk frasa penting, `
 ## 3. Tulis carousel
 - Tambahkan carousel baru di **akhir** `CAROUSELS` di `content.js` dengan `id` bernomor urut berikutnya (lihat id terakhir), `judul`, `format` (`teks`/`foto`/`broll`/`gerak`/`campuran`), dan `tipe` (`vlog`/`step-by-step`/`kompilasi`/`video`/`opini`/`repurpose`).
 - Ikuti resep tipe konten di atas.
+- Tema B → `tema: "scrapbook"` di level carousel. Untuk hook scrapbook, boleh pakai `{{KATA}}` (huruf potongan koran) untuk 1–2 kata saja.
+- **Wajib tulis caption** di carousel itu: `caption` (hook 1 kalimat + emoji secukupnya, 1–2 kalimat isi, ajakan save/share, pertanyaan pancingan komen; pakai `\n\n` antar paragraf) dan `hashtag` (5–8 hashtag, campur umum & spesifik topik). Caption ini tampil di galeri dengan tombol salin.
 - Pemetaan bentuk:
   - A → jenis slide teks saja (`hook`, `validasi`, `poin`, `mitos`, `checklist`, `langkah`, `chat`, `angka`, `polling`, `cta`, dll.).
   - B → sertakan `foto-penuh`/`hook` dengan `foto`, `foto-kartu`, `poin` dengan `foto`, `banding` dengan foto.
@@ -59,5 +62,5 @@ Gaya viral yang bisa dipakai di semua tipe: `==stabilo==` untuk frasa penting, `
 
 ## 4. Selesaikan
 Ikuti bagian "Setelah mengedit" di `CLAUDE.md` (cek, ekspor bila bisa, commit, push, kirim link galeri, caption + hashtag).
-Ringkas balasan akhir: judul carousel, tipe & bentuknya, jumlah slide, link galeri, caption.
+Ringkas balasan akhir: judul carousel, tipe, bentuk & tema, jumlah slide, link galeri, dan caption lengkap (juga tampil di galeri).
 Kalau memakai `kataKunci`, ingatkan pemilik: ia harus benar-benar mengirim yang dijanjikan ke DM setiap orang yang berkomentar (manual atau pakai alat auto-DM).

@@ -74,6 +74,11 @@ Tambahan untuk slide apa saja: `stiker: "kata dokter"` → stiker kuning miring 
 Gaya teks: `*kata*` tulisan sambung · `==kata==` distabilo kuning · `((kata))` dilingkari coretan.
 CTA pancing komen: di slide `cta` tambahkan `kataKunci: "ASI"` → muncul kotak Komen “ASI”.
 
+## Tema desain & caption
+- `tema: "scrapbook"` → kertas sobek, tulisan tangan, garis tinta, ala konten viral (contoh: carousel **#12**). Tanpa `tema` → tampilan berry biasa.
+- `{{TEKS}}` → huruf potongan koran warna-warni, cocok untuk 1–2 kata di hook.
+- `caption` & `hashtag` di level carousel → tampil di galeri dengan tombol **Salin caption**, dan ikut di ZIP sebagai `caption.txt`.
+
 ## Tipe konten viral
 Vlog/photo dump · Step-by-step · Kompilasi · Video carousel · Opini pribadi · Repurpose reels.
 Saat mengetik `/carousel`, Claude akan menawarkan keenam tipe ini beserta susunan slidenya. Contoh kompilasi: carousel **#11**.

@@ -9,7 +9,7 @@
 // Hasil: output/<id-carousel>/slide-01.png / slide-02.mp4 ...
 // =========================================================
 import { chromium } from "playwright";
-import { mkdir, rm, readdir } from "node:fs/promises";
+import { mkdir, rm, readdir, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import path from "node:path";
@@ -67,6 +67,13 @@ for (const set of await page.$$(".set")) {
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
   const slides = await set.$$(".slide");
+
+  // caption.txt (kalau carousel punya caption)
+  const cap = await page.evaluate(id => {
+    const c = CAROUSELS.find(x => x.id === id);
+    return c && c.caption ? c.caption + (c.hashtag ? "\n\n" + c.hashtag : "") : "";
+  }, id);
+  if (cap) { await writeFile(path.join(outDir, "caption.txt"), cap + "\n"); console.log("✓", `${id}/caption.txt`); }
 
   for (let i = 0; i < slides.length; i++) {
     const slide = slides[i];
